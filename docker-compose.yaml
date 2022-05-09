@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3'
 
 services:
   postgresql:
@@ -7,12 +7,25 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=root
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=Opa_SuaSenha
+    volumes:
+      - crud-node-db:/var/lib/postgresql/data
   crud-node:
-    image: felipe-neto/crud-node:1.0
+    #image: felipe-neto/crud-node:1.0
+    image: teste-node:1.0
     container_name: crud-node
     ports:
       - 9090:9090
+    environment:
+      #POSTGRES_HOST_AUTH_METHOD: trust
+      - DB_HOST=localhost
+      - DB_USER=postgres
+      - DB_PASSWORD=Opa_SuaSenha
+      - DB_PORT=5432
+      - DB_NAME=crud_node
     depends_on:
       - postgresql
+
+volumes:
+  crud-node-db:

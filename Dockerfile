@@ -2,10 +2,12 @@ FROM node:17.9-alpine3.15
 
 WORKDIR /app
 
-COPY ["package.json", "package-lock.json*", "./"]
+COPY ["package*.json", "./"]
 
 RUN npm install
 
-COPY src/ .
+COPY . .
+
+EXPOSE 9090
 
 CMD [ "node", "src/index.js" ]
