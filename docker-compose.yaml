@@ -18,7 +18,6 @@ services:
     ports:
       - 9090:9090
     environment:
-      #POSTGRES_HOST_AUTH_METHOD: trust
       - DB_HOST=pg
       - DB_USER=postgres
       - DB_PASSWORD=Opa_SuaSenha
